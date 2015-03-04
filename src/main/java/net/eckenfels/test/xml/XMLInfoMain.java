@@ -21,41 +21,42 @@ public class XMLInfoMain
     public static void main(String[] args)
     {
         XMLInputFactory ifact = XMLInputFactory.newFactory();
-        System.out.println("XMLInputFactory   = " + getInfo(ifact.getClass()));
+        System.out.printf("XMLInputFactory   = %s%n", getInfo(ifact.getClass()));
         for(int i=0;i<ps.length;i++)
-            if (ifact.isPropertySupported(ps[i])) System.out.printf("%-40s = %s%n", ps[i], ifact.getProperty(ps[i]));
+            if (ifact.isPropertySupported(ps[i])) System.out.printf(" %-45s = %s%n", ps[i], ifact.getProperty(ps[i]));
+
         XMLOutputFactory ofact = XMLOutputFactory.newFactory();
-        System.out.println("XMLOutputFactory  = " + getInfo(ofact.getClass()));
+        System.out.printf("%nXMLOutputFactory  = %s%n", getInfo(ofact.getClass()));
         for(int i=0;i<ps.length;i++)
-            if (ofact.isPropertySupported(ps[i])) System.out.printf("%-40s = %s%n", ps[i], ofact.getProperty(ps[i]));
+            if (ofact.isPropertySupported(ps[i])) System.out.printf(" %-45s = %s%n", ps[i], ofact.getProperty(ps[i]));
 
         XMLEventFactory efact = XMLEventFactory.newFactory();
-        System.out.println("  XMLEventFactory = " + getInfo(efact.getClass()));
+        System.out.printf("%nXMLEventFactory   = %s%n", getInfo(efact.getClass()));
 
         SAXParserFactory sfact = SAXParserFactory.newInstance();
-        System.out.println("SAXParserFactory  = " + getInfo(sfact.getClass()));
-        System.out.printf("%-40s = %s%n",  "isNamespaceAware", sfact.isNamespaceAware());
-        System.out.printf("%-40s = %s%n",  "isValidating", sfact.isValidating());
-        try { boolean r = sfact.isXIncludeAware(); System.out.printf("%-40s = %s%n",  "isXIncludeAware", r); } catch (Exception ex) { System.out.printf("%-40s = %s%n", "isXIncludeAware", "not supported");  }
+        System.out.printf("%nSAXParserFactory  = %s%n", getInfo(sfact.getClass()));
+        System.out.printf(" %-45s = %s%n",  "isNamespaceAware", sfact.isNamespaceAware());
+        System.out.printf(" %-45s = %s%n",  "isValidating", sfact.isValidating());
+        try { boolean r = sfact.isXIncludeAware(); System.out.printf(" %-45s = %s%n",  "isXIncludeAware", r); } catch (Exception ex) { System.out.printf("%-40s = %s%n", "isXIncludeAware", "not supported");  }
         for(int i=0;i<ps.length;i++)
-            try { boolean r = sfact.getFeature(ps[i]); System.out.printf("%-40s = %s%n", ps[i], r); } catch (Exception ignored) { /* ignored */  }
+            try { boolean r = sfact.getFeature(ps[i]); System.out.printf(" %-45s = %s%n", ps[i], r); } catch (Exception ignored) { /* ignored */  }
 
         DocumentBuilderFactory dfact = DocumentBuilderFactory.newInstance();
-        System.out.println("DocumentBuilderF  = " + getInfo(dfact.getClass()));
-        System.out.printf("%-40s = %s%n",  "isCoalescing", dfact.isCoalescing());
-        System.out.printf("%-40s = %s%n",  "isExpandEntityReferences", dfact.isExpandEntityReferences());
-        System.out.printf("%-40s = %s%n",  "isIgnoringComments", dfact.isIgnoringComments());
-        System.out.printf("%-40s = %s%n",  "isIgnoringElementContentWhitespace", dfact.isIgnoringElementContentWhitespace());
-        System.out.printf("%-40s = %s%n",  "isNamespaceAware", dfact.isNamespaceAware());
-        System.out.printf("%-40s = %s%n",  "isValidating", dfact.isValidating());
-        try { boolean r = dfact.isXIncludeAware(); System.out.printf("%-40s = %s%n",  "isXIncludeAware", r); } catch (Exception ex) { System.out.printf("%-40s = %s%n", "isXIncludeAware", "not supported");  }
+        System.out.printf("%nDocumentBuilderF  = %s%n", getInfo(dfact.getClass()));
+        System.out.printf(" %-45s = %s%n",  "isCoalescing", dfact.isCoalescing());
+        System.out.printf(" %-45s = %s%n",  "isExpandEntityReferences", dfact.isExpandEntityReferences());
+        System.out.printf(" %-45s = %s%n",  "isIgnoringComments", dfact.isIgnoringComments());
+        System.out.printf(" %-45s = %s%n",  "isIgnoringElementContentWhitespace", dfact.isIgnoringElementContentWhitespace());
+        System.out.printf(" %-45s = %s%n",  "isNamespaceAware", dfact.isNamespaceAware());
+        System.out.printf(" %-45s = %s%n",  "isValidating", dfact.isValidating());
+        try { boolean r = dfact.isXIncludeAware(); System.out.printf(" %-45s = %s%n",  "isXIncludeAware", r); } catch (Exception ex) { System.out.printf(" %-45s = %s%n", "isXIncludeAware", "not supported");  }
         for(int i=0;i<ps.length;i++)
-            try { Object r = dfact.getAttribute(ps[i]); System.out.printf("%-40s = %s%n", ps[i], r); } catch (Exception ignored) { /* ignored */  }
-        for(int i=0;i<ps.length;i++)
-            try { boolean r = dfact.getFeature(ps[i]); System.out.printf("%-40s = %s%n", ps[i], r); } catch (Exception ignored) { /* ignored */  }
+            try { Object r = dfact.getAttribute(ps[i]); System.out.printf(" %-45s = %s%n", ps[i], r); } catch (Exception ignored) { /* ignored */  }
+        //for(int i=0;i<ps.length;i++)
+        //    try { boolean r = dfact.getFeature(ps[i]); System.out.printf(" %-45s = %s%n", ps[i], r); } catch (Exception ignored) { /* ignored */  }
 
         try {
-        System.out.println("Xerces: " + Version.getVersion()+ " " + getInfo(Version.class));
+            System.out.printf("%nXerces: %s %s%n", Version.getVersion(), getInfo(Version.class));
         } catch (Error ignored) { /* ignored */ }
     }
 
